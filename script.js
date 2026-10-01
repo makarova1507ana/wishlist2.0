@@ -51,7 +51,7 @@ const userInput =
     document.getElementById("itemUser");
 const filterUser =
     document.getElementById("filterUser");
-
+const DEFAULT_IMAGE = "default.jpg";
 let allItems = [];
 
 let editingId = null;
@@ -493,17 +493,20 @@ function openDescription(
     descriptionModal.className =
         "description-modal";
 
-    const imageHTML = image
-        ? `
-            <div class="description-image">
-                <img
-                    src="${escapeAttribute(image)}"
-                    alt="${escapeAttribute(name || "")}"
-                    onerror="imageError(this)"
-                >
-            </div>
-        `
-        : "";
+const imageURL =
+    image && image.trim()
+        ? image
+        : DEFAULT_IMAGE;
+
+const imageHTML = `
+    <div class="description-image">
+        <img
+            src="${escapeAttribute(imageURL)}"
+            alt="${escapeAttribute(name || "")}"
+            onerror="imageError(this)"
+        >
+    </div>
+`;
 
     descriptionModal.innerHTML = `
         <div class="description-modal-content">
@@ -617,22 +620,18 @@ function renderWishlist(items) {
             "card";
 
 
-        const imageHTML =
-            item.image
+        const imageURL =
+    item.image && item.image.trim()
+        ? item.image
+        : DEFAULT_IMAGE;
 
-                ? `
-                    <img
-                        src="${escapeAttribute(item.image)}"
-                        alt="${escapeAttribute(item.name || "")}"
-                        onerror="imageError(this)"
-                    >
-                `
-
-                : `
-                    <span class="no-image">
-                        Нет фотографии
-                    </span>
-                `;
+const imageHTML = `
+    <img
+        src="${escapeAttribute(imageURL)}"
+        alt="${escapeAttribute(item.name || "")}"
+        onerror="imageError(this)"
+    >
+`;
 
 
         const linkHTML =
