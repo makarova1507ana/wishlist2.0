@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wishlist</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div>
+        <h1>Wishlist ✨</h1>
+
+        <p class="description">
+            Что я хочу
+        </p>
+    </div>
+
+    <button id="openModalBtn" class="add-button">
+        + Добавить
+    </button>
+
+</header>
+
+
+<main>
+<div class="wishlist-filter">
+    <span>Показать:</span>
+
+    <select id="filterUser">
+        <option value="all">Все</option>
+        <option value="Настя">Настя</option>
+        <option value="Владимир">Владимир</option>
+    </select>
+</div>
+    <div id="wishlist" class="wishlist">
+        <!-- Карточки добавляются через JavaScript -->
+    </div>
+
+</main>
+
+
+<!-- Модальное окно -->
+
+<div id="modal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <button
+                id="closeModalBtn"
+                class="close-button"
+                type="button"
+        >
+            ×
+        </button>
+
+
+        <h2 id="modalTitle">
+            Добавить желание
+        </h2>
+
+
+        <form id="wishlistForm">
+            <label>
+                Кто добавил
+
+                <select id="itemUser">
+                    <option value="Настя">Настя</option>
+                    <option value="Владимир">Владимир</option>
+                </select>
+            </label>
+            <label>
+                Название
+
+                <input
+                        type="text"
+                        id="itemName"
+                        placeholder="Например: Духи"
+                        required
+                >
+            </label>
+
+
+            <label>
+                Описание
+
+                <textarea
+                        id="itemDescription"
+                        placeholder="Почему я этого хочу?"
+                ></textarea>
+            </label>
+
+
+            <label>
+                Ссылка на товар
+
+                <input
+                        type="url"
+                        id="itemLink"
+                        placeholder="https://..."
+                >
+            </label>
+
+
+            <label>
+                Ссылка на фотографию
+
+                <input
+                        type="url"
+                        id="itemImage"
+                        placeholder="https://example.com/photo.jpg"
+                >
+            </label>
+
+
+            <div
+                    id="imagePreview"
+                    class="image-preview"
+            >
+                <span>
+                    Здесь появится фотография
+                </span>
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                        type="button"
+                        id="cancelBtn"
+                        class="cancel-button"
+                >
+                    Отмена
+                </button>
+
+
+                <button
+                        type="submit"
+                        class="save-button"
+                >
+                    Сохранить
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
+
